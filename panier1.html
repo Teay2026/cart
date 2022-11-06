@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+    </head>
+    <style>
+        body{
+            font-family: 'Abel'; font-size: 22px;}
+
+        select{
+            min-width: 150px;
+            height: 30px;
+        }
+            </style>
+<body>
+    <header>
+        <meta charset="UTF-8">
+        <title>Laet You</title>
+    </header>
+    <h1>Laet You</h1>
+
+    <ul class="navigation">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="pagecontact.html">Page contact</a></li>
+    </ul>
+<p> Contenu du panier:</p>
+<br>
+<ul class="panier">
+    <li class="panierformulaire">
+
+        <form>
+            Nom : <br>
+            <input type="text" placeholder="Nom">
+            <br>
+            Prénom: <br>
+            <input type="text" placeholder="Prénom" >
+            <br>
+            Adresse mail : <br>
+            <input type="email" placeholder="Email" required>
+            <br>
+            Téléphone :<br>
+            <input type="tel" placeholder="Numero" required>
+            <br>
+            Adresse : <br>
+            <input type="text" placeholder="Adresse">
+            <br>
+            Délai de livraison : <br>
+            <input type="number" placeholder="Days" id="delivery">
+            <br>
+            <br>
+            <br>
+            <button class="button">Validé la commande</button>
+        </form>
+    </li>
+    <li>
+        <div id="summary">
+        </div>
+    </li>
+
+    <li class="pamierformulaire">
+        <img id="imagepanier" src="" height="350" width="450" >
+
+    </li>
+</ul>
+
+
+<div class="footer"><footer>2022 Laet you tous droits reservé</footer></div>
+
+
+<script>
+    //Collect session storage data that we stored on the product page
+
+    let data = JSON.parse(sessionStorage.getItem("article"));
+
+    //create HTML for checkout card with the session storage values
+
+    let html ='';
+
+    html += `<p>Product price $<span id="price">${data.price}</span></p>`;
+    html += `<p>Material:<span>${data.material}</span></p>`;
+    html += `<p>Couleur:<span>${data.color}</span></p>`;
+    html += `<p>Patronage:<span>${data.pattern}</span></p>`;
+    html += `<p>Custom Note:<span>${data.note}</span></p>`;
+
+    document.getElementById('summary').innerHTML = html
+    document.getElementById('imagepanier').setAttribute('src', data.img)
+
+
+    //update product price based on delivery time
+    document.querySelector('form button').addEventListener('click', function (e){
+        e.preventDefault();
+        let current = parseInt(data.price);
+
+        if(document.getElementById('delivery').value<3){
+            document.getElementById('price').innerText = (current + 8).toString();
+        }
+        else{
+            document.getElementById('price').innerText = (current).toString();
+        }
+    })
+</script>
+</body>
+</html>

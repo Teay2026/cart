@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+        <script src="leatyou.js" defer> </script>
+    </head>
+    <style>
+        body{
+            font-family: 'Abel'; font-size: 22px;}
+            </style>
+    <body>
+        <header>
+            <meta charset="UTF-8">
+            <title>Laet You</title>
+        </header>
+        <h1>Laet You</h1>
+        <p>Laet You votre site de chaussure préféré</p>
+
+<ul class="navigation">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="pagecontact.html">Page contact</a></li>
+  </ul>
+
+
+        <input type="range" class="customrange" id="filtreprix" min="50" max="110"> <div id="valeurprix">  </div> <br>
+
+        <ul class="flex-container" id="basket">
+            <!---Passing product ID and price with the URL as parameter--->
+            <li class="flex-item" data-prix="50"> <a href="personnalisation.html?id=1&price=50"> <img src="photo/01/Blanc.png" height="400" width="500" > </a> <br> Modèle 01 <br> Chaussure mixte de ville <br> 50$ </li>
+            <li class="flex-item" data-prix="50"> <a href="personnalisation.html?id=2&price=80"> <img src="photo/02/Blanc.png" height="400" width="500"> </a> <br> Modèle 02<br> Chaussure mixte de ville <br> 50$</li>
+            <li class="flex-item" data-prix="100"><a href="personnalisation.html?id=3&price=100"> <img src="photo/03/Blanc.png" height="400" width="500"> </a> <br>Modèle 03<br> Chaussure type richelieu <br> 100$ </li>
+          </ul>
+  
+          <div class="footer"><footer>2022 Laet you tous droits reservé</footer></div>
+          <div class="footer2">Livraison dans toutes la france</div>
+</body>
+</html>

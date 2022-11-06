@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+        <script src="leatyou.js" defer> </script>
+    </head>
+    <style>
+        body{
+            font-family: 'Abel'; font-size: 22px;}
+        select{
+            min-width: 150px;
+            height: 30px;
+        }
+            </style>
+    <body>
+        <header>
+            <meta charset="UTF-8">
+            <title>Laet You</title>
+        </header>
+        <h1>Laet You</h1>
+
+<ul class="navigation">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="pagecontact.html">Page contact</a></li>
+</ul>
+     
+        <p>Personalisation de votre chaussure:</p>
+
+        
+        <ul class="personnalisation">
+            <li class="perso">
+                Matière:
+                <input type="radio" name="matiere"id="cuir" value="CUIR" checked> <label for="cuir">CUIR</label>
+                <input type="radio" name="matiere" id="daim" value="DAIM"><label for="daim">DAIM</label>
+
+                <br>
+
+                Couleur:
+
+                <select name="couleur" id="couleur">
+                    <option value="Blanc">Blanc</option>
+                    <option value="Noir">Noir</option>
+                    <option value="Rouge">Rouge</option>
+                </select>
+                <br>
+
+                Poiture: <input type="number" id="poiture" name="pointure" min="35" max="48">
+
+                <br>
+
+                Patronage:
+                <select name="patronage" id="patronage">
+                    <option value="">Sélectionnez une option</option>
+                    <option value="MTV">MTV</option>
+                    <option value="NASA">NASA</option>
+                </select>
+
+                <br>
+
+                Note personnalisée: <br> <textarea id="note" name="note" rows="4" cols="50"></textarea>
+
+            </li>
+            <li class="perso"> <img id="image" src="" height="350" width="450" ></li>
+        </ul>
+
+
+
+<input type="button" class="button" onclick="panieronclick()" value="Ajoutez au panier" />
+
+<div id="prix"> </div>
+
+<div class="footer"><footer>2022 Laet you tous droits reservé</footer></div>
+
+
+</form>
+
+
+    <script>
+
+        //update product image on color select event
+        document.getElementById('couleur').addEventListener('change', function() {
+            setImage()
+        });
+
+        //update product image on color select event
+        document.getElementById('patronage').addEventListener('change', function() {
+            setImage()
+        });
+
+        //Create file path of the image dynamically based on user selected color and pattern
+        function setImage(){
+            let defaultImg = 'photo/'+("0" + produit_id).slice(-2)+'/Blanc.png'
+            let newImg = null;
+
+            let color = document.getElementById('couleur').value;
+            let pattern = document.getElementById('patronage').value;
+
+            if(color !=''){
+                newImg = 'photo/'+("0" + produit_id).slice(-2)+'/'+color+'.png'
+            }
+
+            if(color !='' && pattern !=''){
+                newImg = 'photo/'+("0" + produit_id).slice(-2)+'/'+color+'-'+pattern+'.png'
+            }
+
+            //update product image as per user selected option
+            if(newImg){
+                console.log(newImg )
+                document.getElementById("image").setAttribute('src', newImg)
+            }
+            else{
+                document.getElementById("image").setAttribute('src', defaultImg)
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
+    
